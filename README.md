@@ -5,7 +5,7 @@
 ## 1. [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
    Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
    
-   Solution--
+   ###### Solution--
    ```
    class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
@@ -18,7 +18,7 @@
    Given two strings s and t, return true if t is an anagram of s, and false otherwise.<br/>
    An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
    
-   Solution--
+   ###### Solution--
    ```
    class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
@@ -42,7 +42,7 @@ Given an array of integers nums and an integer target, return indices of the two
 You may assume that each input would have exactly one solution, and you may not use the same element twice.<br/>
 You can return the answer in any order.
 
-Solution(C++) --
+###### Solution(C++) --
 ```
 class Solution {
 public:
@@ -63,4 +63,26 @@ public:
         return res;
     }
 };
+```
+## 4. [Group Anagrams](https://leetcode.com/problems/group-anagrams/)
+Given an array of strings strs, group the anagrams together. You can return the answer in any order.<br/>
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+###### Solution(Python)--
+
+```
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        l=[]
+        d={}
+        ind=0
+        for i in strs:
+            s="".join(sorted(i))
+            if s not in d:
+                d[s]=ind
+                l.append([i])
+                ind+=1
+            else:
+                l[d[s]].append(i)
+        return l
 ```
