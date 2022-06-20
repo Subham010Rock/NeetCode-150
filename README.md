@@ -86,3 +86,36 @@ class Solution:
                 l[d[s]].append(i)
         return l
 ```
+## 5. [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
+Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+
+###### Solution(C++)--
+
+```
+class Solution {
+public:
+    static bool comp(pair<int,int>&a,pair<int,int>&b){
+        return a.second > b.second;
+    }
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        map<int,int>m;
+        for(int i=0;i<nums.size();i++){
+            if(m.find(nums[i])!=m.end())
+                m[nums[i]]++;
+            else
+                m[nums[i]]=1;
+        }
+        vector<pair<int,int>>v;
+        for(auto& it:m){
+            v.push_back(it);
+        }
+        sort(v.begin(),v.end(),comp);
+        
+        vector<int>res;
+        for(int i=0;i<k;i++){
+            res.push_back(v[i].first);
+        }
+        return res;
+    }
+};
+```
